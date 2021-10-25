@@ -7,9 +7,9 @@ down to 0 (as the last element).
     Example: countdown(5) should return [5,4,3,2,1,0]"""
 def countDown(num):
     newList = []
-    for x in range(num,-1,-1):
-        newList.append(x)
-    #newList = [x*1 for x in range(num,-1,-1)]
+    # for x in range(num,-1,-1):
+    #     newList.append(x)
+    newList = [x for x in range(num,-1,-1)]
     print(newList)
 countDown(5)
 
