@@ -2,36 +2,66 @@ class BankAccount:
     
     # account_info = []
 
-    def __init__(self, int_rate, balance): 
-        self.int_rate = int_rate
-        self.balance = balance
+    def __init__(self, checking_balance = 0, savings_balance = 0, checking_int_rate = 0.005, savings_int_rate = 0.05): 
+        self.checking_int_rate = checking_int_rate
+        self.savings_int_rate = savings_int_rate
+        self.checking_balance = checking_balance
+        self.savings_balance = savings_balance
         # BankAccount.account_info.append(self)
-    
-    def current_balance(self):
-        return self.balance
 
-    def deposit(self, amount):
-        self.balance += amount
-        return self
 
-    def withdraw(self, amount):
-        self.amount = amount
-        if self.balance >= self.amount:
-            self.balance -= amount
+    def deposit(self, amount, type):
+        self.type = type
+        if self.type.lower() == "checking":
+            self.checking_balance += amount
             return self
-        else:
-            print("Insufficient funds: Charging a $5 fee")
-            self.balance -= 5
+        if self.type.lower() == "savings":
+            self.savings_balance += amount
+            return self
+
+    def withdraw(self, amount, type):
+        self.amount = amount
+        self.type = type
+        if self.type.lower() == "checking":
+            if self.checking_balance >= self.amount:
+                self.checking_balance -= amount
+                return self
+            else:
+                print("Insufficient funds: Charging a $5 fee")
+                self.checking_balance -= 5
+                return self
+
+        if self.type.lower() == "savings":
+            if self.savings_balance >= self.amount:
+                self.savings_balance -= amount
+                return self
+            else:
+                print("-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-")
+                print("Insufficient funds: Charging a $5 fee")
+                print("-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-")
+                self.savings_balance -= 5
+                return self
 
     def display_account_info(self):
-        print(f"Balance: ${self.balance} and Interest rate: {self.int_rate}%")
+        print(f"Your Checking Account balance is ${self.checking_balance} with an interest rate of {self.checking_int_rate}%")
+        print(f"Your Savings Account balance is ${self.savings_balance} with an interest rate of {self.savings_int_rate}%")
+        self.checking_balance += self.savings_balance
+        print(f"Your total balance is ${self.checking_balance}")
+        print("-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-")
 
-    def yield_interest(self):
-        if self.balance > 0:
-            self.balance *= self.int_rate
+    def checking_yield_interest(self):
+        if self.checking_balance > 0:
+            self.checking_balance *= self.checking_int_rate
         else:
-            print("No interest")
-        return self.int_rate
+            print("No interest earned")
+        return self
+
+    def savings_yield_interest(self):
+        if self.savings_balance > 0:
+            self.savings_balance *= self.savings_int_rate
+        else:
+            print("No interest earned")
+        return self
     # @classmethod
     # def log_account_info(cls):
     #     sum = 0
@@ -45,15 +75,16 @@ class User:
         self.email = email
         self.account_balance = account 
 
-    def make_deposit(self,amount):
-        self.account_balance.deposit(amount)
+    def make_deposit(self,amount,type):
+        self.account_balance.deposit(amount,type)
         return self
     
-    def make_withdrawal(self, amount):
-        self.account_balance.withdraw(amount)
+    def make_withdrawal(self, amount,type):
+        self.account_balance.withdraw(amount,type)
         return self
 
     def display_user_balance(self):
+        print(f"Hello, {self.name}!")
         self.account_balance.display_account_info()
         return f"User: {self.name}, Balance: ${self.account_balance}"
     
@@ -61,14 +92,14 @@ class User:
     #    self.user = user
     #    self.account_balance -= transfer
 
-account1 = BankAccount(0.05, 100)
-account2 = BankAccount(0.005, 1000)
+accounts1 = BankAccount()
+accounts2 = BankAccount()
 
-user1 = User("Jonathan Smith","jonathan.smith722@gmail.com", account1)
-user2 = User("Meghan Smith", "meghan.smith227@gmail.com", account2)
+user1 = User("Jonathan Smith","jonathan.smith722@gmail.com", accounts1)
+user2 = User("Meghan Smith", "meghan.smith227@gmail.com", accounts2)
 
-user1.make_deposit(500).make_deposit(5).make_deposit(50).make_withdrawal(700)
-user2.make_deposit(600).make_deposit(60).make_withdrawal(6).make_withdrawal(54).make_withdrawal(100).make_withdrawal(200)
+user1.make_deposit(500,"savings").make_deposit(5,"checking").make_deposit(50,"checking").make_withdrawal(700,"savings")
+user2.make_deposit(600,"savings").make_deposit(60,"checking").make_withdrawal(6,"checking").make_withdrawal(54,"checking").make_withdrawal(100,"savings").make_withdrawal(200,"savings")
 
 user1.display_user_balance()
 user2.display_user_balance()
