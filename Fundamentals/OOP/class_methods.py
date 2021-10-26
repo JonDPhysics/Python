@@ -1,12 +1,14 @@
 class BankAccount:
-# class attribute
+    bank_name = "First National Dojo"
+    all_accounts = []
+
     bank_name = "First National Dojo"
     all_accounts = []
     def __init__(self, int_rate,balance):
         self.int_rate = int_rate
         self.balance = balance
         BankAccount.all_accounts.append(self)
-    
+
 # class method to change the name of the bank
     @classmethod
     def change_bank_name(cls,name):
