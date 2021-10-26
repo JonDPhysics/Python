@@ -40,10 +40,10 @@ class BankAccount:
         return sum
 
 class User:
-    def __init__(self, name, email):
+    def __init__(self, name, email, account):
         self.name = name
         self.email = email
-        self.account = account1	# added this line
+        self.account = account	# added this line
 
     def example_method(self):
     # we can call the BankAccount instance's methods
@@ -61,7 +61,7 @@ account1.display_account_info()
 account2.display_account_info()
 print(f"Total: {BankAccount.log_account_info()}")
 
-user1 = User("Jonathan Smith","jonathan.smith722@gmail.com")
-user2 = User("Meghan Smith", "meghan.smith227@gmail.com")
+user1 = User("Jonathan Smith","jonathan.smith722@gmail.com", account1)
+user2 = User("Meghan Smith", "meghan.smith227@gmail.com", account2)
 user1.example_method()
 user2.example_method()
