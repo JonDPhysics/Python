@@ -1,5 +1,5 @@
 class BankAccount:
-    # don't forget to add some default values for these parameters!
+
     def __init__(self, int_rate, balance): 
         self.int_rate = int_rate
         self.balance = balance
@@ -9,11 +9,36 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
-        self.balance -= amount
-        return self
+        self.amount = amount
+        if self.balance >= self.amount:
+            self.balance -= amount
+            return self
+        else:
+            print("Insufficient funds: Charging a $5 fee")
+            self.balance -= 5
 
     def display_account_info(self):
-        print(f"Your account balance is ${self.balance} with an interest rate of {self.int_rate}%")
+        print(f"Balance: ${self.balance} Interest rate: {self.int_rate}%")
 
     def yield_interest(self):
-        
+        if self.balance > 0:
+            self.balance *= self.int_rate
+        else:
+            print("No interest")
+    # @classmethod
+    # def log_account_info(cls):
+    #     account_info = {}
+    #     account_info["balance"] = cls.balance
+    #     account_info["interest"] = cls.int_rate
+    #     return account_info
+
+account1 = BankAccount(0.05, 100)
+account2 = BankAccount(0.005, 1000)
+
+account1.deposit(500).deposit(5).deposit(50).withdraw(700)
+account2.deposit(600).deposit(60).withdraw(6).withdraw(54).withdraw(100).withdraw(200)
+
+account1.display_account_info()
+account2.display_account_info()
+# print(account1.log_account_info())
+# print(account2.log_account_info())

@@ -6,7 +6,7 @@ from the number (as the 0th element)
 down to 0 (as the last element). 
     Example: countdown(5) should return [5,4,3,2,1,0]"""
 def countDown(num):
-    newList = []
+    #newList = []
     # for x in range(num,-1,-1):
     #     newList.append(x)
     newList = [x for x in range(num,-1,-1)]
@@ -18,11 +18,12 @@ countDown(5)
 Create a function that will receive a list with two numbers. 
 Print the first value and return the second.
     Example: print_and_return([1,2]) should print 1 and return 2"""
-def printReturn(jack, jill):
-    print(jack)
-    return jill
-print(printReturn(1,2))
-printReturn(3,4)
+def printReturn(num1, num2):
+    print(num1)
+    return num2
+printReturn(1,2)
+# print(printReturn(1,2))
+# printReturn(3,4)
 
 """
     3.First Plus Length:
@@ -30,7 +31,7 @@ Create a function that accepts a list and returns the sum of the first value in 
     Example: first_plus_length([1,2,3,4,5]) should return 6 (first value: 1 + length: 5)"""
 list = [1,2,3,4,5]
 def firstPlusLength(list):
-    sum = list[0] + list[len(list)-1]
+    sum = list[0] + len(list)
     return sum
 print(firstPlusLength(list))
 
