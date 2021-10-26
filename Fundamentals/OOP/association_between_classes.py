@@ -39,6 +39,18 @@ class BankAccount:
             sum += val.balance
         return sum
 
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.account = account1	# added this line
+
+    def example_method(self):
+    # we can call the BankAccount instance's methods
+        self.account.deposit(100)
+    # or access its attributes
+        print(f"{self.name}'s Balance: ${self.account.balance}")
+
 account1 = BankAccount(0.05, 100)
 account2 = BankAccount(0.005, 1000)
 
@@ -47,4 +59,9 @@ account2.deposit(600).deposit(60).withdraw(6).withdraw(54).withdraw(100).withdra
 
 account1.display_account_info()
 account2.display_account_info()
-print(f"Total: ${BankAccount.log_account_info()}")
+print(f"Total: {BankAccount.log_account_info()}")
+
+user1 = User("Jonathan Smith","jonathan.smith722@gmail.com")
+user2 = User("Meghan Smith", "meghan.smith227@gmail.com")
+user1.example_method()
+user2.example_method()
