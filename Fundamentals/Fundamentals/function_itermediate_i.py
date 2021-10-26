@@ -56,14 +56,16 @@ students = [
 
 def iterateDictionary(some_list):
     dict_values = []
+    dict_keys = []
     for i in range(len(some_list)):
         for key in some_list[i]:
+            dict_keys.append(key)
             dict_values.append(some_list[i][key])
 
-    print(f'first_name - {dict_values[0]}, last_name - {dict_values[1]}')
-    print(f'first_name - {dict_values[2]}, last_name - {dict_values[3]}')
-    print(f'first_name - {dict_values[4]}, last_name - {dict_values[5]}')
-    print(f'first_name - {dict_values[6]}, last_name - {dict_values[7]}')
+    print(f'{dict_keys[0]} - {dict_values[0]}, {dict_keys[1]} - {dict_values[1]}')
+    print(f'{dict_keys[2]} - {dict_values[2]}, {dict_keys[3]} - {dict_values[3]}')
+    print(f'{dict_keys[4]} - {dict_values[4]}, {dict_keys[5]} - {dict_values[5]}')
+    print(f'{dict_keys[6]} - {dict_values[6]}, {dict_keys[7]} - {dict_values[7]}')
 
 iterateDictionary(students)
 
