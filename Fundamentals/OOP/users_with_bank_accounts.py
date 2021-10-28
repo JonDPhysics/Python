@@ -2,7 +2,7 @@ class BankAccount:
     
     # account_info = []
 
-    def __init__(self, checking_balance = 0, savings_balance = 0, checking_int_rate = 0.005, savings_int_rate = 0.05): 
+    def __init__(self, checking_balance, savings_balance, checking_int_rate = 0.005, savings_int_rate = 0.05): 
         self.checking_int_rate = checking_int_rate
         self.savings_int_rate = savings_int_rate
         self.checking_balance = checking_balance
@@ -92,11 +92,11 @@ class User:
     #    self.user = user
     #    self.account_balance -= transfer
 
-accounts1 = BankAccount()
-accounts2 = BankAccount()
+# accounts1 = BankAccount()
+# accounts2 = BankAccount()
 
-user1 = User("Jonathan Smith","jonathan.smith722@gmail.com", accounts1)
-user2 = User("Meghan Smith", "meghan.smith227@gmail.com", accounts2)
+user1 = User("Jonathan Smith","jonathan.smith722@gmail.com", BankAccount(100, 200))
+user2 = User("Meghan Smith", "meghan.smith227@gmail.com", BankAccount(1000, 2000))
 
 user1.make_deposit(500,"savings").make_deposit(5,"checking").make_deposit(50,"checking").make_withdrawal(700,"savings")
 user2.make_deposit(600,"savings").make_deposit(60,"checking").make_withdrawal(6,"checking").make_withdrawal(54,"checking").make_withdrawal(100,"savings").make_withdrawal(200,"savings")
