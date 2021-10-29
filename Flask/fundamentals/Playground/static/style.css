@@ -1,0 +1,16 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#container {
+    width: 500px;
+    display: flex;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+    border: 2px solid black;
+}
