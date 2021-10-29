@@ -1,0 +1,23 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#container {
+    width: 800px;
+}
+
+.row {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background-color: black;
+}
+
+.column {
+    flex: 1;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 100px;
+}
