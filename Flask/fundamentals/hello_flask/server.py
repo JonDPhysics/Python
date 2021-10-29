@@ -3,7 +3,9 @@ app = Flask(__name__)    # Create a new instance of the Flask class called "app"
 
 @app.route('/')          # The "@" decorator associates this route with the function immediately followin
 def hello_world():
-    return render_template('index.html')  # Return the result of the render_template method with the name of our HTML file as a parameter
+    return render_template('index.html', phrase = "hello", times = 5)  
+    # Return the result of the render_template method with the name of our HTML file as a parameter
+    # Notice the two new named arguments!
 
 @app.route('/success')
 def success():
