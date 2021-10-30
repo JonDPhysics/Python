@@ -1,0 +1,40 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#container {
+    width: fit-content;
+    height: fit-content;
+    margin: 100px 0px 0px 700px;
+}
+h1{
+    text-align: center;
+}
+h4 {
+    text-align: center;
+    margin: 15px;
+}
+
+#buttons {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#clicker {
+    width: 75px;
+    height: 25px;
+    background-color: dodgerblue;
+    color: white;
+}
+
+#clear {
+    margin-left: 70px;
+    width: 75px;
+    height: 25px;
+    background-color: red;
+    color: lightgrey
+}
+
+
