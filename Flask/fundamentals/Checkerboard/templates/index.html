@@ -36,15 +36,9 @@
                 </div>
             {% else: %}
                 <div class="row2">
-                {% if col % 2 == 1: %}
-                    {% for num in range(0,col): %}
-                        <div class="column2"></div>
-                    {% endfor %}
-                {% else: %}
-                    {% for num in range(0,col): %}
-                        <div class="column2"></div>
-                    {% endfor %}
-                {% endif %}
+                {% for num in range(0,col): %}
+                    <div class="column2"></div>
+                {% endfor %}
                 </div>
             {% endif %}
         {% endfor %}

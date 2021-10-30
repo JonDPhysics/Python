@@ -9,26 +9,20 @@
 </head>
 <body>
     <div id="container">
-        <div class="row">
-            <div class="column"><h3>First Name</h3></div>
-            <div class="column"><h3>Last Name</h3></div>
-            <div class="column"><h3>Full Name</h3></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
+        <table>
+            <tr class = "topRow">
+                <th class = 'topCol'>First Name</th>
+                <th class = 'topCol'>Last Name</th>
+                <th class = 'topCol'>Full Name</th>
+            </tr>
+            {% for idx in users: %}
+                <tr class="row">
+                {% for key in idx: %}
+                    <td class="col">{{ idx[key] }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 </body>
 </html>
