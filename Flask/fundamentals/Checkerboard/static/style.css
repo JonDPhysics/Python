@@ -4,20 +4,45 @@
 }
 
 #container {
-    width: 800px;
+    width: auto;
+    height: 900px;
+    margin-left: 400px;
 }
 
-.row {
-    display: flex;
+#banner {
     width: 800px;
     height: 100px;
-    background-color: black;
+    margin-left: 400px;
 }
 
-.column {
-    flex: 1;
+.row1 {
+    width: fit-content;
+    display: flex;
+    height: 100px;
+    margin-right: 100px;
+    background-color: black;
+
+
+}
+
+.row2 {
+    width: fit-content;
+    display: flex;
+    height: 100px;
+    margin-right: 100px;
+    background-color: red;
+}
+
+.column1 {
     width: 100px;
     height: 100px;
+    margin-right: 100px;
     background-color: red;
-    margin: 100px;
+}
+
+.column2 {
+    width: 100px;
+    height: 100px;
+    margin-right: 100px;
+    background-color: black;
 }

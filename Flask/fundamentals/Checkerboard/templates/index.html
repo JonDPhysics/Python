@@ -4,59 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Checkboard</title>
+    <!-- <style>
+        .column1 {
+            background-color: color2;
+        }
+
+        .row2 {
+            background-color: color2;
+        }
+
+        .column2{
+            background-color: color1;
+        }
+
+        .row1 {
+            background-color: color1;
+        }
+    </style> -->
 </head>
 <body>
     <div id="container">
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
+        <div id="banner"></div>
+        {% for num in range(0,roe): %}
+            {% if num % 2 == 1: %}
+                <div class="row1">
+                {% for num in range(0,col): %}
+                    <div  class="column1"></div>
+                {% endfor %}
+                </div>
+            {% else: %}
+                <div class="row2">
+                {% if col % 2 == 1: %}
+                    {% for num in range(0,col): %}
+                        <div class="column2"></div>
+                    {% endfor %}
+                {% else: %}
+                    {% for num in range(0,col): %}
+                        <div class="column2"></div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </body>
 </html>
