@@ -13,7 +13,7 @@ def create_user():
     email = request.form['email']
     return redirect("/show")
 
-@app.route("/show")
+@app.route("/show", methods=['POST'])
 def show_user():
     print("Showing the User Info From the Form")
     print(request.form)

@@ -10,10 +10,17 @@
 <body>
     <div id="container">
         <h1>Counter</h1>
-        <h4>{{ count }}</h4>
+        <h4>{{ session['count'] }}</h4>
         <div id="buttons">
-            <button id="clicker">Click</button>
-            <button id="clear">Reset</button>
+            <form action="/" >
+                <button id="clicker">Click</button>
+            </form>
+            <form action="/destroy_session">
+                <button id="clear">Reset</button></form>
+            </div>
+            <form action="/addTwo">
+                <button id="clickTwo">Add Two</button>
+            </form>
         </div>
     </div>
 </body>
