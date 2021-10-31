@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Survey Results</title>
+</head>
+<body>
+    <div id="container">
+        <table>
+            <tr class = "topRow">
+                <th class = 'topCol'>Name</th>
+                <th class = 'topCol'>Location</th>
+                <th class = 'topCol'>Language</th>
+                <th class = 'topCol'>Comments</th>
+            </tr>
+            <tr class = "topRow">
+                <td class = 'topCol'>{{ session['name'] }}</td>
+                <td class = 'topCol'>{{ session['loco'] }}</td>
+                <td class = 'topCol'>{{ session['lang'] }}</td>
+                <td class = 'topCol'>{{ session['comment'] }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
