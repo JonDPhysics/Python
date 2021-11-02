@@ -1,0 +1,13 @@
+INSERT INTO users (first_name, last_name, email, created_at, updated_at) VALUE ("Tyler", "Tbo", "tyler.tbo@coding.dojo", now(), now());
+INSERT INTO users (first_name, last_name, email, created_at, updated_at) VALUE ("Christian", "Land", "christian.land@coding.dojo", now(), now());
+INSERT INTO users (first_name, last_name, email, created_at, updated_at) VALUE ("Pablo", "Padilla", "pablo.padilla@coding.dojo", now(), now());
+DELETE FROM users WHERE id in (2, 5, 6);
+SELECT * FROM users;
+SELECT * FROM users WHERE email = "tyler.tbo@coding.dojo";
+SELECT * FROM users WHERE id = 4;
+UPDATE users SET last_name = "Pancakes" WHERE id = 4;
+DELETE FROM users WHERE id = 3;
+SELECT * FROM users
+ORDER BY first_name;
+SELECT * FROM users
+ORDER BY first_name DESC;
