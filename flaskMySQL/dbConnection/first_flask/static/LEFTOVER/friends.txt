@@ -1,0 +1,7 @@
+SELECT * FROM friends;
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Sparrow", "Captain");
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Daniel", "Alcoholic");
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Frost", "Snowdad");
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Bauer", "CTU");
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Ryan", "Professor");
+INSERT INTO friends (first_name, last_name, occupation) VALUE ("Jack", "Brown", "Doctor");
