@@ -9,7 +9,7 @@ class Friend:
         self.occupation = data['occupation']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-    # Now we use class methods to query our database
+        # Now we use class methods to query our database
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM friends;"
