@@ -1,7 +1,7 @@
 from flask.globals import request
 from flask_app import app
-from flask import render_template, redirect, request
-from name import Name # replace name & Name
+from flask import render_template, redirect, request, session
+from example import Example # name change needed
 
 @app.route("/")
 def start():
