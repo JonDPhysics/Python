@@ -3,9 +3,9 @@ from flask_app.config.mysqlconnection import connectToMySQL
 class Example: # name change needed
     def __init__( self , data ):
         self.id = data['id']
-        self.first_name = data['first_name'] #name change needed
-        self.last_name = data['last_name'] #name change needed
-        self.occupation = data['occupation'] #name change needed
+        self.blank1 = data['blank1'] #name change needed
+        self.blank2 = data['blank2'] #name change needed
+        self.blank3 = data['blank3'] #name change needed
         self.created_at = data['created_at'] #name change needed
         self.updated_at = data['updated_at'] #name change needed
 
