@@ -1,0 +1,36 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#container {
+    width: fit-content;
+    height: fit-content;
+    margin: 100px 0px 0px 400px;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.box {
+    margin-bottom: 10px;
+}
+
+.top > th {
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.row {
+    width: fit-content;
+}
+
+.col {
+    width: fit-content;
+    padding: 10px;
+}
+
+a {
+    margin: 55px 0px 0px 400px;
+}
