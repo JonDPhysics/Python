@@ -11,22 +11,17 @@ def index():
 
 @app.route("/new")
 def new_user():
-    render_template("add.html")
+    return render_template("add.html")
 
 @app.route("/create_user", methods = ["POST"])
 def create_user():
     data = {
-        "id": request.form["id"],
         "fname": request.form["fname"], 
         "lname": request.form["lname"],
         "email": request.form["email"],
     }
     User.save(data)
     return redirect("/users")
-
-@app.route("/add_user", methods = ["POST"])
-def add_users():
-    return redirect("/new")
 
 if __name__ == "__main__":
     app.run(debug=True)
