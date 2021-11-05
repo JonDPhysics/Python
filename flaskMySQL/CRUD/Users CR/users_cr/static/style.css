@@ -13,7 +13,8 @@ h1 {
     margin-bottom: 25px;
 }
 
-.top {
+.box {
+    margin-bottom: 10px;
 }
 
 .top > th {
