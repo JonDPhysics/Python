@@ -11,18 +11,24 @@
     <div id="container">
         <h1>All Examples</h1>
         <table>
-            <tr class="topRow">
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-            </tr>
-            <tr class="row1">
-                <td class="col"></td>
-                <td class="col"></td>
-                <td class="col"></td>
-                <td class="col"></td>
-            </tr>
+            <thead>
+                <tr class="topRow">
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in tables: %}
+                <tr class="row1">
+                    <td class="col"></td>
+                    <td class="col"></td>
+                    <td class="col"></td>
+                    <td class="col"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 </body>

@@ -18,20 +18,24 @@
         <div class="box">
             <h1>All Examples</h1>
         <table>
-            <tr class="topRow">
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-                <th class='topCol'></th>
-            </tr>
-            {% for row in tables %}
-                <tr class="row">
-                    <td class="col"></td>
-                    <td class="col"></td>
-                    <td class="col"></td>
-                    <td class="col"></td>
+            <thead>
+                <tr class="topRow">
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
+                    <th class='topCol'></th>
                 </tr>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for row in tables: %}
+                    <tr class="row">
+                        <td class="col"></td>
+                        <td class="col"></td>
+                        <td class="col"></td>
+                        <td class="col"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
         </div>
     </div>

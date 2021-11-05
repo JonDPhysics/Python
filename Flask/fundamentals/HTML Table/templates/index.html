@@ -10,18 +10,23 @@
 <body>
     <div id="container">
         <table>
-            <tr class = "topRow">
-                <th class = 'topCol'>First Name</th>
-                <th class = 'topCol'>Last Name</th>
-                <th class = 'topCol'>Full Name</th>
-            </tr>
-            {% for idx in users: %}
-                <tr class="row">
-                {% for key in idx: %}
-                    <td class="col">{{ idx[key] }}</td>
-                {% endfor %}
+            <thead>
+                <tr class = "topRow">
+                    <th class = 'topCol'>First Name</th>
+                    <th class = 'topCol'>Last Name</th>
+                    <th class = 'topCol'>Full Name</th>
                 </tr>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for idx in users: %}
+                    <tr class="row">
+                    {% for key in idx: %}
+                        <td class="col">{{ idx[key] }}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
         </table>
     </div>
 </body>
