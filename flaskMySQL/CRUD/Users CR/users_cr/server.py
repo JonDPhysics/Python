@@ -9,7 +9,7 @@ def index():
     # call the get all classmethod to get all friends
     return render_template("index.html", users = User.get_all())
 
-@app.route("/users/new")
+@app.route("/new")
 def new_user():
     render_template("add.html")
 
@@ -26,8 +26,7 @@ def create_user():
 
 @app.route("/add_user", methods = ["POST"])
 def add_users():
-
-    return redirect("/users/new")
+    return redirect("/new")
 
 if __name__ == "__main__":
     app.run(debug=True)
