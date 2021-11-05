@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 # import the class from friend.py
 from user import User
 app = Flask(__name__)
+app.secret_key = "TOP-SECRET: need to know required"
+
 @app.route("/users")
 def index():
     # call the get all classmethod to get all friends
