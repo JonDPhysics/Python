@@ -9,14 +9,15 @@ def index():
 
 @app.route("/users/new")
 def new_user():
-
     render_template("add.html")
 
 @app.route("/create_user", methods = ["POST"])
 def create_user():
     data = {
-        "fullname": request.form["fname", "lname"],
-        "email": request.form["email"]
+        "id": request.form["id"],
+        "fname": request.form["fname"], 
+        "lname": request.form["lname"],
+        "email": request.form["email"],
     }
     User.save(data)
     return redirect("/users")

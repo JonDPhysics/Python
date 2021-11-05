@@ -17,14 +17,9 @@
     font-weight: bolder;
 }
 
-.row1 {
+.row {
     width: fit-content;
     background-color: lightgrey;
-}
-
-.row2 {
-    width: fit-content;
-    background-color: white;
 }
 
 .col {

@@ -6,7 +6,7 @@ from flask_app.models.example import Example # name change needed
 
 @app.route("/")
 def start():
-    return render_template("table.html", tables = Example.get_all())
+    return render_template("table.html", examples = Example.get_all())
 
 @app.route ("/edit", methods=['POST'])
 def edit():
