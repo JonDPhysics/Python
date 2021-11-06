@@ -13,19 +13,23 @@ def index():
 def show_user():
     return render_template("show.html", users = User.get_one())
 
-@app.route("/edit", methods=["POST"])
+@app.route("/edit")
 def edit_user():
+    return render_template("edit.html")
+
+@app.route('/change_info', methods=['POST'])
+def change_info():
     data = {
         "fname": request.form["fname"], 
         "lname": request.form["lname"],
         "email": request.form["email"],
     }
     User.change(data)
-    return redirect("/users",)
+    return redirect("/users")
 
 @app.route("/delete")
 def delete_user():
-    User.remove(data):
+    User.remove()
     return render_template("index.html")
 
 @app.route("/new")
