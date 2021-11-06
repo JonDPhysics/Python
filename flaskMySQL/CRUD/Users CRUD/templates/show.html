@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read (One)</title>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <h1>User</h1>
+            <a href="/users">Home</a>
+        </div>
+        <table>
+            <thead>
+                <tr class="topRow">
+                    <th class="topCol">ID</th>
+                    <th class="topCol">Full Name</th>
+                    <th class="topCol">Email</th>
+                    <th class="topCol">Created At</th>
+                    <th class="topCol"> Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row">
+                    <td class="col">{{ row.id }}</td>
+                    <td class="col">{{ row.first_name + " " + row.last_name }}</td>
+                    <td class="col">{{ row.email }}</td>
+                    <td class="col">{{ row.created_at }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a href="/edit" method='post'>Edit</a>
+            <a href="/delete">Delete</a>
+        </div>
+    </div>
+</body>
+</html>
