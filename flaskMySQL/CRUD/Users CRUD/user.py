@@ -25,18 +25,24 @@ class User:
 
     @classmethod
     def get_one(cls):
-        pass
+        query = "SELECT %(id)s FROM users;"
+        result = connectToMySQL('users_cr_db').query_db(query)
+        return result
 
     @classmethod
-    def save(cls, data ):
+    def save(cls, data):
         query = "INSERT INTO users ( first_name , last_name , email , created_at, updated_at ) VALUES ( %(fname)s , %(lname)s , %(email)s , NOW() , NOW() );"
         # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL('users_cr_db').query_db( query, data )
 
     @classmethod
     def change(cls, data):
-        pass
+        query = "UPDATE users SET first_name=%(fname)s WHERE id=%(id)s;"
+        query = "UPDATE users SET last_name=%(lname)s WHERE id=%(id)s;"
+        query = "UPDATE users SET email=%(email)s WHERE id=%(id)s;"
+        connectToMySQL('users_cr_db').query_db(query, data)
 
     @classmethod
-    def delete(cls, data):
-        pass
+    def remove(cls, data):
+        query = "DELETE FROM users WHERE id=%(id)s"
+        connectToMySQL('users_cr_db').query_db(query, data)

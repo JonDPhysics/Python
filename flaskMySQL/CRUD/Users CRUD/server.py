@@ -25,7 +25,7 @@ def edit_user():
 
 @app.route("/delete")
 def delete_user():
-    User.delete(data):
+    User.remove(data):
     return render_template("index.html")
 
 @app.route("/new")
