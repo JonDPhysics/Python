@@ -15,16 +15,12 @@ def show_user():
 
 @app.route("/edit")
 def edit_user():
-    return render_template("edit.html")
+    all_users = user.User.get_all()
+    return render_template("edit.html", all_users=all_users)
 
 @app.route('/change_info', methods=['POST'])
 def change_info():
-    data = {
-        "fname": request.form["fname"], 
-        "lname": request.form["lname"],
-        "email": request.form["email"],
-    }
-    User.change(data)
+    
     return redirect("/users")
 
 @app.route("/delete")
@@ -39,8 +35,8 @@ def new_user():
 @app.route("/create_user", methods = ["POST"])
 def create_user():
     data = {
-        "fname": request.form["fname"], 
-        "lname": request.form["lname"],
+        "first_name": request.form["first_name"], 
+        "last_name": request.form["last_name"],
         "email": request.form["email"],
     }
     User.save(data)

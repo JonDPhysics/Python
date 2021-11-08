@@ -20,7 +20,7 @@
             {% for row in users %}
                 <tr class="row">
                     <td class="col">{{ row.id }}</td>
-                    <td class="col">{{ row.first_name + " " + row.last_name }}</td>
+                    <td class="col">{{ row.fullname() }}</td>
                     <td class="col">{{ row.email }}</td>
                     <td class="col">{{ row.created_at }}</td>
                 </tr>

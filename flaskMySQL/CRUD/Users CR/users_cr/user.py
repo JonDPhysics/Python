@@ -10,6 +10,10 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         # Now we use class methods to query our database
+
+    def fullname(self):
+        return f"{self.first_name} {self.last_name}"
+
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"

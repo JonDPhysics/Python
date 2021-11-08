@@ -10,29 +10,40 @@
 <body>
     <div id="container">
         <div>
-            <h1>Edit User</h1>
+            {% if user: %}
+                <p>User name is {{ user.fullname() }}</p>
+            {% else: %}
+                <p>No user found</p>
+            {% endif %}
             <a href="/users">Home</a>
         </div>
         <form action="/change_info" method="post">
+            <div>
+                <select name="user_id" id="user_id">
+                    {% for user in all_users: %}
+                        <option value="user_id">{{ user.fullname() }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="">
-                <label for="fname">First Name:</label>
+                <label for="first_name">First Name:</label>
             </div>
             <div class="box">
-                <input type="text" name="fname">
+                <input type="text" name="first_name">
             </div>
             <div class="">
-                <label for="lname">Last Name:</label>
+                <label for="last_name">Last Name:</label>
             </div>
             <div class="box">
-                <input type="text" name="lname">
+                <input type="text" name="last_name" id='last_name'>
             </div>
             <div class="">
                 <label for="email" >Email:</label>
             </div>
             <div class="box">
-                <input type="text" name="email">
+                <input type="text" name="email" id='email'>
             </div>
-            <input type="submit" value="Change">
+            <input type="submit" value="Updated">
         </form>
     </div>
 </body>
