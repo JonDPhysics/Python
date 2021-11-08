@@ -12,8 +12,8 @@ def start():
 def add_user():
     return render_template("add.html")
 
-@app.route ("/edit", methods=['POST'])
-def edit():
+@app.route ("/add", methods=['POST'])
+def add():
     data = {
         "first_name": request.form["first_name"], 
         "last_name": request.form["last_name"],
@@ -21,3 +21,11 @@ def edit():
     }
     User.create(data)
     return redirect("/")
+
+@app.route("/edit_user")
+def edit_user():
+    return render_template("edit.html", users = User.get_all())
+
+@app.route("/edit", methods=['POST'])
+def edit():
+    pass

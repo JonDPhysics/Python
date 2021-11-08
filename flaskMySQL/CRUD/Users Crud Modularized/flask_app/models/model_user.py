@@ -24,8 +24,8 @@ class User:
         return users
 
     @classmethod
-    def get_by_id(cls):
-        query = "SELECT * FROM users WHERE id=%(user_id)s;"
+    def get_by_fname(cls):
+        query = "SELECT * FROM users WHERE id=%(first_name)s;"
         result = connectToMySQL(DATABASE).query_db(query)
         if not result:
             return False
@@ -33,22 +33,12 @@ class User:
 
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO users (firt_name, last_name, email, created_at, updated_at) Value (%(first_name)s, %(last_name)s, %(email)s, NOW(), NOW());"
+        query = "INSERT INTO users (first_name, last_name, email, created_at, updated_at) Value (%(first_name)s, %(last_name)s, %(email)s, NOW(), NOW());"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def edit_fname(cls, data):
-        query = "UPDATE users SET first_name = %(first_name)s WHERE id = %(user_id)s;"
-        connectToMySQL(DATABASE).query_db(query, data)
-
-    @classmethod
-    def edit_lname(cls, data):
-        query = "UPDATE users SET last_name = %(last_name)s WHERE id = %(user_id)s;"
-        connectToMySQL(DATABASE).query_db(query, data)
-
-    @classmethod
-    def edit_email(cls, data):
-        query = "UPDATE users SET email = %(email)s WHERE id = %(user_id)s;"
+        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
         connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod

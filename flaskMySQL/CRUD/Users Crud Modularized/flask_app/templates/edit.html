@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- insert bootstrap link -->
+    <title>Edit User</title>
+</head>
+<body>
+    <div id="container">
+        <div class="box">
+            <h1>You Choose</h1>
+            <select name="id" id="id">
+                {% for user in users: %}
+                    <option value="{{id}}">{{ user.fullname() }}</option>
+                {% endfor %}
+            </select>
+        </div> 
+        <div class="box">
+            <!-- <h1>Add Examples</h1> -->
+            <form action="/edit" method="post">
+                <div>
+                    <label for="first_name">First name:</label>
+                    <input type="text" name="first_name" id=first_name>
+                </div>
+                <div>
+                    <label for="last_name">Last name:</label>
+                    <input type="text" name="last_name" id=last_name>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <button>Edit User</button>
+            </form>
+            <div>
+                <a href="/">Home</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="container">
-        <form action="/edit" method="post">
+        <form action="/add" method="post">
             <div>
                 <label for="first_name">First name:</label>
                 <input type="text" name="first_name" id=first_name>
@@ -20,10 +20,14 @@
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input type="text" name="email" id=email>
+                <input type="text" name="email" id="email">
             </div>
             <button>Add User</button>
         </form>
+        <div>
+            <a href="/edit_user">Edit</a>
+            <a href="/">Home</a>
+        </div>
     </div>
 </body>
 </html>
