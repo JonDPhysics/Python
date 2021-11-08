@@ -1,5 +1,6 @@
 CRUD FOR MYSQL SYNTAX:
--Create -INSERT INTO table (table_columns1, table_columns2, etc) VALUES (value1, value2, etc)
+-Create 
+-INSERT INTO table (table_columns1, table_columns2, etc) VALUES (value1, value2, etc)
 
 -Retreive/Read  
         -SELECT column (*(all), column1, column2,...., column_) FROM table
