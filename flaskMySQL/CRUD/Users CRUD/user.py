@@ -30,7 +30,7 @@ class User:
         return users
 
     @classmethod
-    def get_one(cls, data:dict):
+    def get_one(cls, data):
         query = "SELECT * FROM users WHERE id=%(id)s;"
         results = connectToMySQL(DATABASE).query_db(query)
         

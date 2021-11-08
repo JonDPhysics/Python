@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('staitc', filename='style.css') }}">
+    <!-- insert bootstrap link -->
     <title>Table and Form</title>
 </head>
 <body>
@@ -18,12 +18,13 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr class="row1">
-                <td class="col"></td>
-                <td class="col"></td>
-                <td class="col"></td>
-                <td class="col"></td>
-            </tr>
+            {% for row in examples: %}
+                <tr class="row1">
+                    <td class="col">row.</td>
+                    <td class="col">row.</td>
+                    <td class="col">row.</td>
+                    <td class="col">row.</td>
+                </tr>
         </table>
         </div>
         <div class="box">
