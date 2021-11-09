@@ -24,9 +24,9 @@ class User:
         return users
 
     @classmethod
-    def get_by_fname(cls):
-        query = "SELECT * FROM users WHERE id=%(first_name)s;"
-        result = connectToMySQL(DATABASE).query_db(query)
+    def get_by_id(cls, data):
+        query = "SELECT * FROM users WHERE id=%(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
         if not result:
             return False
         return cls(result[0])
@@ -37,11 +37,11 @@ class User:
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
-    def edit_fname(cls, data):
+    def update(cls, data):
         query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
         connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def remove(cls, data):
-        query = "DELETE FROM users WHERE id=%(user_id)s;"
+        query = "DELETE FROM users WHERE id=%(id)s;"
         connectToMySQL(DATABASE).query_db(query, data)

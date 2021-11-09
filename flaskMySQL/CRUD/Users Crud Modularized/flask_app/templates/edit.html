@@ -11,15 +11,15 @@
     <div id="container">
         <div class="box">
             <h1>You Choose</h1>
-            <select name="id" id="id">
-                {% for user in users: %}
-                    <option value="{{id}}">{{ user.fullname() }}</option>
-                {% endfor %}
-            </select>
         </div> 
         <div class="box">
             <!-- <h1>Add Examples</h1> -->
             <form action="/edit" method="post">
+                <select name="id" id="id">
+                    {% for user in users: %}
+                        <option value="{{ user.id }}">{{ user.fullname() }}</option>
+                    {% endfor %}
+                </select>
                 <div>
                     <label for="first_name">First name:</label>
                     <input type="text" name="first_name" id=first_name>
