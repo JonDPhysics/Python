@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="container">
-        <h1>{{ dojos.name }} Ninjas</h1>
+        <h1>{{ dojo.name }}'s Ninjas</h1>
         <table>
             <thead>
                 <tr class="topRow">
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for ninja in ninjas: %}
+                {% for ninja in dojo.ninjas: %}
                 <tr class="row1">
                     <td class="col">{{ ninja.first_name }}</td>
                     <td class="col">{{ ninja.last_name }}</td>

@@ -10,8 +10,8 @@
 <body>
     <div id="container">
         <h1>New Ninja</h1>
-        <form action="/ninja/{{ ninjas.dojo_id }}" method="post">
-            <select name="dojo" id="dojo">
+        <form action="/ninjas" method="post">
+            <select name="dojo_id" id="dojo_id">
                 {% for dojo in dojos: %}
                     <option value="{{ dojo.id }}">{{ dojo.name }}</option>
                 {% endfor %}
@@ -30,6 +30,7 @@
             </div>
             <button>Create</button>
         </form>
+        <a href="/dojos">Home</a>
     </div>
 </body>
 </html>

@@ -22,11 +22,11 @@
         <div class="box">
             <h1>All Dojos</h1>
             <div class="box">
-                {% for row in dojos: %}
-                    <a href="/dojos/{{ row.id }}">{{ row.name }}</a>
+                {% for dojo in dojos: %}
+                    <a href="/dojos/{{ dojo.id }}">{{ dojo.name }}</a>
                 {% endfor %}
             </div>
-        <a href="add/ninja">Add Ninja</a>
+        <a href="/add/ninjas">Add Ninja</a>
     </div>
 </body>
 </html>
