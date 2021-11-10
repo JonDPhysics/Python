@@ -1,8 +1,13 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_bcrypt import Bcrypt
+from flask_app import app
 import re
 
+bcrypt = Bcrypt(app)
+
 SCHEMA = 'log_reg'
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
     def __init__(self, data):
@@ -32,7 +37,7 @@ class User:
 
     @classmethod
     def insert_user(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(pw)s);"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         return connectToMySQL(SCHEMA).query_db(query, data)
 
     @staticmethod
@@ -47,7 +52,6 @@ class User:
             flash("Last Name must be at least 2 characters.")
             is_valid = False
 
-        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(user_data['email']):
             flash("Invalid email address!")
             is_valid = False
@@ -57,7 +61,7 @@ class User:
                 flash("Email is already in use!")
                 is_valid = False
 
-        if len(user["password"]) < 8:
+        if len(user_data["password"]) < 8:
             flash("Password must be at least 8 characters.")
             is_valid = False
 
@@ -69,4 +73,14 @@ class User:
 
     @staticmethod
     def log_val(user_data):
-        pass
+        user = User.get_user_by_email({"email": user_data["email"]})
+
+        if not user:
+            flash("Email not registered")
+            return False
+
+        if not bcrypt.check_password_hash(user.password, user_data["password"]):
+            flash("Incorrect Password")
+            return False
+
+        return True

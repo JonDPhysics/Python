@@ -22,13 +22,25 @@ def register():
         "password": hash_it_out
     }
 
-    User.insert_user(data)
+    user_id = User.insert_user(data)
+    session["uuid"] = user_id
     return redirect("/dashboard")
 
 @app.route("/dashboard")
 def dash():
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", user = User.get_user_by_id({"id": session["uuid"]}))
 
 @app.route("/logout")
-def out():
-    pass
+def logout():
+    session.clear()
+    return redirect("/")
+
+@app.route("/login", methods=['POST'])
+def login():
+    if not User.log_val(request.form):
+        return redirect("/")
+
+    user = User.get_user_by_email({"email": request.form["email"]})
+    session["uuid"] = user.id
+    return redirect("/dashboard")
+

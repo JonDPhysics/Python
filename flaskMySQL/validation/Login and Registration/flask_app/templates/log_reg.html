@@ -21,34 +21,41 @@
                     <input type="text" name="last_name">
                 </div>
                 <div>
-                    <label for="reg_email">Email:</label>
-                    <input type="text" name="reg_email">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email">
                 </div>
                 <div>
-                    <label for="reg_pw">Password:</label>
-                    <input type="text" name="reg_pw">
+                    <label for="password">Password:</label>
+                    <input type="text" name="password">
                 </div>
                 <div>
-                    <label for="confirm_pw">Confirm Password:</label>
-                    <input type="text" name="confirm_pw">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="text" name="confirm_password">
                 </div>
                 <button>Register</button>
             </form>
         </div>
         <div class="box">
             <h1>Login</h1>
-            <form action="/register" method="post">
+            <form action="/login" method="post">
                 <div>
-                    <label for="log_email">Email:</label>
-                    <input type="text" name="log_email">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email">
                 </div>
                 <div>
-                    <label for="log_pw">Password:</label>
-                    <input type="text" name="log_pw">
+                    <label for="password">Password:</label>
+                    <input type="text" name="password">
                 </div>
                 <button>Login</button>
             </form>
         </div>
+        {% with messages = get_flashed_messages() %}     
+        {% if messages %}                            
+            {% for message in messages %}            
+                <p>{{message}}</p>                   
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
     </div>
 </body>
 </html>
