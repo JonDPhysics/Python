@@ -20,6 +20,16 @@ class Recipe:
         self.updated_at = data['updated_at']
 
     @classmethod
-    def insert_ninja(cls,data):
-        query = "INSERT INTO recipes (name, description, instruction, user_id) VALUE (%(name)s, %(description)s, %(instruction)s, %(user_id)s);"
+    def insert_recipe(cls, data):
+        query = "INSERT INTO recipes (name, description, instruction, within, user_id) VALUE (%(name)s, %(description)s, %(instruction)s, %(within)s, %(user_id)s);"
         return connectToMySQL(SCHEMA).query_db(query, data)
+
+    @classmethod
+    def update_recipe(cls, data):
+        query = "UPDATE recipe SET name= %(name)s, description = %(description)s, instruction = %(instruction)s, within = %(within)s, user_id = %(user_id)s)"
+        connectToMySQL(SCHEMA).query_db(query, data)
+
+    @classmethod
+    def delete_recipe(cls, data):
+        query = "DELETE FROM recipes WHERE id = %(id)s;"
+        connectToMySQL(SCHEMA).query_db(query, data)
