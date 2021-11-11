@@ -24,12 +24,14 @@ def reg():
 
     uid =User.insert_user(data)
     session["uuid"] = uid
-    return redirect("/dashboard")
+    return redirect("/dashboard", session["uuid"])
 
-@app.route("dashboard")
+@app.route("/dashboard")
 def dash():
-
-    return render_template("dashboard.html", user = User.get_user_by_id({"id": session["uuid"]}))
+    context = {
+        'user': User.get_users_with_recipes({'id': session["uuid"]})
+    }
+    return render_template("dashboard.html", **context)
 
 @app.route("/logout")
 def logout():
