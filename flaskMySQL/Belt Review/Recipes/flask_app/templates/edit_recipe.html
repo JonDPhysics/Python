@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}">
     <title>Recipe</title>
 </head>
 <body>
@@ -14,7 +13,7 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
-        <form action="/dashboard" method="post">
+        <form action="/update_recipe" method="post">
             <div class="left">
                 <div>
                     <label for="name">Name:</label>

@@ -3,8 +3,8 @@ from flask.globals import request
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_bcrypt import Bcrypt
-from flask_app.models.user import User
-from flask_app.models.recipe import BCRYPT
+from flask_app.models.models_user import User
+from flask_app.models.models_recipe import Recipe, BCRYPT
 
 
 
@@ -22,16 +22,12 @@ def reg():
         "pw": hash_it_out
     }
 
-    uid =User.insert_user(data)
-    session["uuid"] = uid
-    return redirect("/dashboard", session["uuid"])
+    User.insert_user(data)
+    return redirect("/dashboard")
 
 @app.route("/dashboard")
 def dash():
-    context = {
-        'user': User.get_users_with_recipes({'id': session["uuid"]})
-    }
-    return render_template("dashboard.html", **context)
+    return render_template("dashboard.html", user = User.get_users(), recipes = Recipe.get_recipes())
 
 @app.route("/logout")
 def logout():

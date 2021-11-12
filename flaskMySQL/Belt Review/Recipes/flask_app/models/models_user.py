@@ -1,9 +1,7 @@
-from flask_app.models.recipe import Recipe, SCHEMA, EMAIL_REGEX, BCRYPT
+from flask_app.models.models_recipe import Recipe, SCHEMA, EMAIL_REGEX, BCRYPT
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_bcrypt import Bcrypt
-from flask_app import app
-import re
+
 
 class User:
     def __init__( self , data ):
@@ -11,7 +9,7 @@ class User:
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']
-        self.password = data['pw']
+        self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.recipes = []
@@ -50,7 +48,7 @@ class User:
     def get_user_by_id(cls, data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(SCHEMA).query_db(query, data)
-        if len(results) < 1:
+        if not results:
             return False
         return User(results[0])
 
@@ -64,7 +62,7 @@ class User:
 
     @classmethod
     def insert_user(cls, data):
-        query = "INSERT INTO user (first_user, last_name, email, password,) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(pw)s)"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(pw)s)"
         return connectToMySQL(SCHEMA).query_db(query, data)
 
 
