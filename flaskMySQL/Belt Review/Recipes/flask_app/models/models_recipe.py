@@ -44,7 +44,7 @@ class Recipe:
 
     @classmethod
     def update_recipe(cls, data):
-        query = "UPDATE recipes SET name= %(name)s, description = %(description)s, instruction = %(instruction)s, within = %(within)s, date_made = %(date_made)s, user_id = %(user_id)s)"
+        query = "UPDATE recipes SET name= %(name)s, description = %(description)s, instruction = %(instruction)s, within = %(within)s, date_made = %(date_made)s, user_id = %(user_id)s"
         connectToMySQL(SCHEMA).query_db(query, data)
 
     @classmethod
