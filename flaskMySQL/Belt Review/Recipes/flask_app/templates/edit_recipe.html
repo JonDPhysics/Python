@@ -13,29 +13,29 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
-        <form action="/update_recipe" method="post">
+        <form action="/recipes/update" method="post">
             <div class="left">
                 <div>
                     <label for="name">Name:</label>
-                    <input type="text" name='name'>
+                    <input type="text" name='name' value="{{ recipe.name }}">
                 </div>
                 <div>
                     <label for="description">Description:</label>
-                    <input type="text" name='description'>
+                    <textarea name='description' cols="30" rows="5">{{ recipe.description }}</textarea>
                 </div>
                 <div>
                     <label for="instruction">Instruction:</label>
-                    <input type="text" name='instruction'>
+                    <textarea name='description' cols="30" rows="5">{{ recipe.instruction }}</textarea>
                 </div>
             </div>
             <div class="right">
                 <div>
-                    <label for="created_at"></label>
-                    <input type="date" name="created_at">
+                    <label for="date_made"></label>
+                    <input type="date" name="date_made" value="{{ recipe.date_made }}">
                 </div>
                 <div>
                     <label for="within">Under 30 Minutes?</label>
-                    <input type="radio" name="yes">
+                    <input type="radio" name="yes" checked>
                     <label for="yes">Yes<label>
                     <input type="radio" name="no">
                     <label for="no">No<label>

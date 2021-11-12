@@ -22,14 +22,23 @@ def add_recipes():
     return redirect("/dashboard")
 
 @app.route("/recipes/<int:id>")
-def edit_recipe(id):
-    return render_template("edit_recipe.html", recipe = Recipe.get_recipe_by_id(id))
+def display_recipe(id):
+    return render_template("display.html", user = User.get_user_by_id({"id": session["uuid"]}), recipe = Recipe.get_recipe_by_id({"id": id}))
 
 @app.route("/recipes/edit/<int:id>")
-def display_recipe(id):
-    return render_template("display.html", recipe = Recipe.get_recipe_by_id(id))
+def edit_recipe(id):
+    return render_template("edit_recipe.html", recipe = Recipe.get_recipe_by_id({"id": id}))
+
+@app.route("/recipes/update", methods=['POST'])
+def update_recipes():
+    data = {
+        **request.form,
+        "user_id": session["uuid"]
+        }
+    Recipe.update_recipe(data)
+    return redirect("/dashboard")
 
 @app.route("/recipes/delete/<int:id>")
 def delete(id):
-    Recipe.delete_recipe(id)
-    return render_template("dashboard.html", user = User.get_users(), recipe = Recipe.get_recipes())
+    Recipe.delete_recipe({"id": id})
+    return redirect("/dashboard")

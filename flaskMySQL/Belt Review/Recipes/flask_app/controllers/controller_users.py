@@ -27,7 +27,9 @@ def reg():
 
 @app.route("/dashboard")
 def dash():
-    return render_template("dashboard.html", user = User.get_users(), recipes = Recipe.get_recipes())
+    if not session:
+        return redirect("/")
+    return render_template("dashboard.html", user = User.get_user_by_id({"id":session['uuid']}), recipes = Recipe.get_recipes())
 
 @app.route("/logout")
 def logout():

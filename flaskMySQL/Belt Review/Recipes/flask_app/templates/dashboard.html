@@ -29,8 +29,10 @@
                     <td class="col">{{ recipe.within }}</td>
                     <td class="col">
                         <a href="/recipes/{{ recipe.id }}">view instructions</a>
-                        <a href="/recipes/edit/{{ recipe.id }}">edit</a>
-                        <a href="/recipes/delete/{{ recipe.id }}">delete</a>
+                        {% if recipe.user_id == user.id %}
+                            <a href="/recipes/edit/{{ recipe.id }}">edit</a>
+                            <a href="/recipes/delete/{{ recipe.id }}">delete</a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

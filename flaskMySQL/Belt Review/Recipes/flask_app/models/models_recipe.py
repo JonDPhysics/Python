@@ -51,3 +51,4 @@ class Recipe:
     def delete_recipe(cls, data):
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         connectToMySQL(SCHEMA).query_db(query, data)
+        return id
