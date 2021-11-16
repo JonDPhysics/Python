@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}">
+    <title>Allocations</title>
+</head>
+<body>
+    <div id="container">
+        <div class="bar">
+            <h1>Allocations</h1>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <form action="/dashboard" method="post">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name='name'>
+            </div>
+            <div>
+                <label for="Transaction">Transaction:</label>
+                <select name="transaction">
+                    <option value="in">Income</option>
+                    <option value="out">Expense</option>
+                </select>
+            </div>
+            <div>
+                <label for="amount">Amount:</label>
+                <input type="number" name='amount'>
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <input type="date" name='date'>
+            </div>
+            <button>Add</button>
+        </form>
+        <label>Powered by:</label>
+        <img src="" alt="">
+    </div>
+</body>
+</html>
