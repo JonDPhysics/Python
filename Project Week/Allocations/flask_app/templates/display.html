@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('staitc', filename='style.css') }}">
-    <title>Table and Form</title>
+    <title>Allocations</title>
 </head>
 <body>
     <div id="container">
-            <div class="bar">
-                <h1>Welcome, {{ user.first_name }}!</h1>
-                <a href="/dashboard">Dashboard</a>
-                <a href="/logout">Logout</a>
-            </div>
-            <h1>{{ recipe.name }}</h1>
-            <div class="box">
-                <p>Description: {{ recipe.description }}</p>
-                <p>Under 30 minutes: {{ recipe.within }}</p>
-                <p>Instructions: {{ recipe.instruction }}</p>
-                <p>Date Made: {{ recipe.created_at }}</p>
-            </div>
+        <div class="bar">
+            <h1>Allocations</h1>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>In/Out</th>
+                    <th>Date</th>
+                    <th>{{ account.balance }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for input in budget: %}
+                <tr>
+                    <td>input.name</td>
+                    <td>input.transaction</td>
+                    <td>input.date</td>
+                    <td>input.amount</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <label>Powered by:</label>
+            <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
+        </div>
     </div>
 </body>
 </html>

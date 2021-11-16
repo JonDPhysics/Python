@@ -4,39 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table.css') }}">
-    <title>Recipes</title>
+    <title>Allocations</title>
 </head>
 <body>
     <div id="container">
+        <h1>Allocations</h1>
         <div class="bar">
-            <h1>Welcome, {{ user.first_name }}</h1>
-            <a href="/recipes/new">Create</a>
+            <h2>Welcome, {{ user.first_name }}</h2>
+            <a href="/accounts/new">Add Account</a>
             <a href="/logout">Logout</a>
         </div>
-        <h3>These are the recipes</h3>
-        <table>
-            <thead>
-                <tr class="topRow">
-                    <th class='topCol'>Name</th>
-                    <th class='topCol'>Under 30 Minutes?</th>
-                    <th class='topCol'>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for recipe in recipes: %}
-                <tr class="row1">
-                    <td class="col">{{ recipe.name }}</td>
-                    <td class="col">{{ recipe.within }}</td>
-                    <td class="col">
-                        <a href="/recipes/{{ recipe.id }}">view instructions</a>
-                        <a href="/recipes/edit/{{ recipe.id }}">edit</a>
-                        <a href="/delete">delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <h3>Accounts</h3>
+            {% for account in accounts: %}
+                <h4>{{ account.name }}</h4>
+            {% endfor %}
+        <div>
+            <label>Powered by:</label>
+            <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
+        </div>
     </div>
 </body>
 </html>
