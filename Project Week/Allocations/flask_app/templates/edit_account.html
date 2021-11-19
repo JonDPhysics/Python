@@ -13,26 +13,21 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
-        <form action="/dashboard" method="post">
+        <form action="/accounts/update/{{ account.id }}" method="post">
             <div>
                 <label for="name">Account Name:</label>
-                <input type="text" name='name'>
-            </div>
-            <div>
-                <label for="type">Account Type:</label>
-                <select name="type">
-                    <option value="check">Checking</option>
-                    <option value="save">Savings</option>
-                </select>
+                <input type="text" name='name' value="{{ account.name }}">
             </div>
             <div>
                 <label for="balance">Balance:</label>
-                <input type="number" name='balance'>
+                <input type="number" name='balance' value="{{ account.balance }}">
             </div>
             <button>Update</button>
         </form>
-        <label>Powered by:</label>
-        <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
+        <!-- <div>
+            <label>Powered by:</label>
+            <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
+        </div> -->
     </div>
 </body>
 </html>

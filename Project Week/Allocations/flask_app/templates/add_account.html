@@ -13,28 +13,28 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
-        <form action="/dashboard" method="post">
+        <form action="/accounts/add" method="post">
             <div>
                 <label for="name">Account Name:</label>
                 <input type="text" name='name'>
             </div>
             <div>
-                <label for="type">Account Type:</label>
-                <select name="type">
-                    <option value="check">Checking</option>
-                    <option value="save">Savings</option>
-                </select>
-            </div>
-            <div>
                 <label for="balance">Balance:</label>
-                <input type="number" name='balance'>
+                <input type="number" step="any" name='balance'>
             </div>
             <button>Add</button>
         </form>
-        <div>
+        <!-- <div>
             <label>Powered by:</label>
             <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
-        </div>
+        </div> -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </div>
 </body>
 </html>

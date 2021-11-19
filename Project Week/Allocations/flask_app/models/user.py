@@ -1,13 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models.account import Account
+from flask_app.models.budget import EMAIL_REGEX, SCHEMA, BCRYPT
 from flask import flash
-from flask_bcrypt import Bcrypt
-from flask_app import app
-import re
-
-bcrypt =Bcrypt(app)
-
-SCHEMA = 'log_reg_rep'
-EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 class User:
     def __init__( self , data ):
@@ -15,9 +9,10 @@ class User:
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']
-        self.password = data['pw']
+        self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.accounts =[]
 
     @classmethod
     def get_users(cls):
@@ -45,8 +40,27 @@ class User:
         return User(results[0])
 
     @classmethod
+    def get_users_with_accounts(cls, data):
+        query = "SELECT * FROM users LEFT JOIN accounts ON accounts.user_id = users.id WHERE users.id = %(id)s;"
+        results = connectToMySQL(SCHEMA).query_db(query, data)
+        if not results:
+            return False
+        user = cls(results[0])
+        for data in results:
+            account_data = {
+                "id": data["accounts.id"],
+                "name": data["name"],
+                "balance": data["balance"],
+                "user_id": data["user_id"],
+                "created_at": data["accounts.created_at"],
+                "updated_at": data["accounts.updated_at"]
+            }
+            user.accounts.append(Account(account_data))
+        return user
+
+    @classmethod
     def insert_user(cls, data):
-        query = "INSERT INTO user (first_user, last_name, email, password,) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(pw)s)"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s, %(last_name)s, %(email)s, %(pw)s)"
         return connectToMySQL(SCHEMA).query_db(query, data)
 
 
@@ -89,7 +103,7 @@ class User:
             flash("Email not registered")
             return False
 
-        if not bcrypt.check_password_hash(user.password, pd["pw"]):
+        if not BCRYPT.check_password_hash(user.password, pd["pw"]):
             flash("Incorrect Password")
             return False
 

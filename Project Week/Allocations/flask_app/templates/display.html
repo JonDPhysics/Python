@@ -13,6 +13,9 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
+        <h3>{{ user.first_name }}'s Account:</h3>
+        <h3><strong>{{ account.name }}</strong></h3>
+        <a href="/budgets/new/{{ account.id }}">Add Transaction</a>
         <table>
             <thead>
                 <tr>
@@ -23,20 +26,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for input in budget: %}
+                {% for input in account.budgets: %}
                 <tr>
-                    <td>input.name</td>
-                    <td>input.transaction</td>
-                    <td>input.date</td>
-                    <td>input.amount</td>
+                    <td>{{ input.name }}</td>
+                    <td>{{ input.transaction }}</td>
+                    <td>{{ input.date }}</td>
+                    <td>{{ input.amount }}</td>
+                    <td><a href="/budgets/edit/{{ account.id }}/{{ input.name }}">edit</a></td>
+                    <td><a href="/budgets/delete/{{ input.id }}">delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <div>
+        <!-- <div>
             <label>Powered by:</label>
             <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
-        </div>
+        </div> -->
     </div>
 </body>
 </html>

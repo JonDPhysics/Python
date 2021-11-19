@@ -14,14 +14,18 @@
             <a href="/accounts/new">Add Account</a>
             <a href="/logout">Logout</a>
         </div>
-        <h3>Accounts</h3>
-            {% for account in accounts: %}
-                <h4>{{ account.name }}</h4>
+        <h3>Accounts:</h3>
+            {% for account in user.accounts: %}
+                <div>
+                    <a href="/display/{{ account.id }}">{{ account.name }}</a>
+                    <a href="/accounts/edit/{{ account.id }}">edit</a>
+                    <a href="/accounts/delete/{{ account.id }}">delete</a>
+                </div>
             {% endfor %}
-        <div>
+        <!-- <div>
             <label>Powered by:</label>
             <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
-        </div>
+        </div> -->
     </div>
 </body>
 </html>

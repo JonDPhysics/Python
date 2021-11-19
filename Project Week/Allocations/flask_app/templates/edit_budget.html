@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}">
     <title>Allocations</title>
 </head>
 <body>
@@ -14,32 +13,42 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
-        <form action="/dashboard" method="post">
+        <form action="/budgets/update/{{ budget.id }}/{{ account_id.id }}" method="post">
             <div>
-                <label for="name">Name:</label>
-                <input type="text" name='name'>
+                <label for="input_name">Name:</label>
+                <input type="text" name='input_name' value="{{ budget.name }}">
             </div>
-            <div>
-                <label for="Transaction">Transaction:</label>
-                <select name="transaction">
-                    <option value="in">Income</option>
-                    <option value="out">Expense</option>
-                </select>
-            </div>
+            {% if budget.transaction == "out": %}
+                <div>
+                    <label for="Transaction">Transaction:</label>
+                    <select name="transaction">
+                        <option value="in" >Income</option>
+                        <option value="out" checked>Expense</option>
+                    </select>
+                </div>
+            {% else: %}
+                <div>
+                    <label for="Transaction">Transaction:</label>
+                    <select name="transaction">
+                        <option value="in" >Income</option>
+                        <option value="out">Expense</option>
+                    </select>
+                </div>
+            {% endif %}
             <div>
                 <label for="amount">Amount:</label>
-                <input type="number" name='amount'>
+                <input type="number" step="any" name='amount' value="{{ budget.amount }}">
             </div>
             <div>
                 <label for="date">Date:</label>
-                <input type="date" name='date'>
+                <input type="date" name='date' value="{{ budget.date }}">
             </div>
             <button>Update</button>
         </form>
-        <div>
+        <!-- <div>
             <label>Powered by:</label>
             <img src="{{ url_for('static', filename='img/white_logo_color_background.jpg') }}">
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
