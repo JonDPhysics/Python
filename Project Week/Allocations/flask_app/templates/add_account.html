@@ -15,12 +15,16 @@
         </div>
         <form action="/accounts/add" method="post">
             <div>
-                <label for="name">Account Name:</label>
-                <input type="text" name='name'>
+                <label for="account_name">Account Name:</label>
+                <input type="text" name='account_name'>
             </div>
             <div>
-                <label for="balance">Balance:</label>
-                <input type="number" step="any" name='balance'>
+                <label for="account_balance">Balance:</label>
+                <input type="number" step="any" name='account_balance'>
+            </div>
+            <div>
+                <label for="account_date">Date</label>
+                <input type="date" name="account_date">
             </div>
             <button>Add</button>
         </form>

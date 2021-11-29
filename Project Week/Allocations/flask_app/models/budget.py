@@ -10,10 +10,9 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class Budget:
     def __init__(self, data):
         self.id = data["id"]
-        self.input_name = data["input_name"]
+        self.input = data["input"]
         self.amount = data["amount"]
         self.date = data["date"]
-        self.transaction = data["transaction"]
         self.account_id = data["account_id"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
@@ -37,7 +36,7 @@ class Budget:
 
     @classmethod
     def get_budget_by_name(cls, data):
-        query = "SELECT * FROM budgets WHERE input_name = %(input_name)s;"
+        query = "SELECT * FROM budgets WHERE input = %(input)s;"
         results = connectToMySQL(SCHEMA).query_db(query, data)
         if len(results) < 1:
             return False
@@ -45,12 +44,12 @@ class Budget:
 
     @classmethod
     def insert_budget(cls, data):
-        query = "INSERT INTO budgets (input_name, date, amount, transaction, account_id) VALUE (%(input_name)s, %(date)s, %(amount)s, %(transaction)s, %(account_id)s);"
+        query = "INSERT INTO budgets (input, date, amount, account_id) VALUE (%(input)s, %(date)s, %(amount)s, %(account_id)s);"
         return connectToMySQL(SCHEMA).query_db(query, data)
 
     @classmethod
     def update_budget(cls, data):
-        query ="UPDATE budgets SET input_name = %(input_name)s, date = %(date)s, transaction = %(transaction)s, amount = %(amount)s, account_id = %(account_id)s WHERE id = %(id)s;"
+        query ="UPDATE budgets SET input = %(input)s, date = %(date)s, amount = %(amount)s, account_id = %(account_id)s WHERE id = %(id)s;"
         connectToMySQL(SCHEMA).query_db(query, data)
 
     @classmethod

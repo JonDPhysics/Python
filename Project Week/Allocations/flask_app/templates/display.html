@@ -22,17 +22,21 @@
                     <th>Name</th>
                     <th>In/Out</th>
                     <th>Date</th>
-                    <th>{{ account.balance }}</th>
+                    <th>{{ account.account_balance }}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for input in account.budgets: %}
                 <tr>
-                    <td>{{ input.name }}</td>
-                    <td>{{ input.transaction }}</td>
+                    <td>{{ input.input }}</td>
+                    {% if input.amount|float < 0: %}
+                        <td style="color: red">{{ input.amount * -1 }}</td>
+                    {% else: %}
+                        <td>{{ input.amount }}</td>
+                    {% endif %}
                     <td>{{ input.date }}</td>
                     <td>{{ input.amount }}</td>
-                    <td><a href="/budgets/edit/{{ account.id }}/{{ input.name }}">edit</a></td>
+                    <td><a href="/budgets/edit/{{ account.id }}/{{ input.input }}">edit</a></td>
                     <td><a href="/budgets/delete/{{ input.id }}">delete</a></td>
                 </tr>
                 {% endfor %}

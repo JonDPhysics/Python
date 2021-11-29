@@ -49,8 +49,9 @@ class User:
         for data in results:
             account_data = {
                 "id": data["accounts.id"],
-                "name": data["name"],
-                "balance": data["balance"],
+                "account_name": data["account_name"],
+                "account_balance": data["account_balance"],
+                "account_date": data["account_date"],
                 "user_id": data["user_id"],
                 "created_at": data["accounts.created_at"],
                 "updated_at": data["accounts.updated_at"]

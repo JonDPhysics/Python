@@ -7,8 +7,9 @@ from flask import flash
 class Account:
     def __init__(self, data):
         self.id = data["id"]
-        self.name = data["name"]
-        self.balance = data["balance"]
+        self.account_name = data["account_name"]
+        self.account_balance = data["account_balance"]
+        self.account_date = data["account_date"]
         self.user_id = data["user_id"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
@@ -33,7 +34,7 @@ class Account:
 
     @classmethod
     def get_account_by_name(cls, data):
-        query = "Select * FROM accounts WHERE name = %(name)s;"
+        query = "Select * FROM accounts WHERE account_name = %(account_name)s;"
         results = connectToMySQL(SCHEMA).query_db(query, data)
         if len(results) < 1:
             return False
@@ -49,10 +50,9 @@ class Account:
         for data in results:
             budget_data = {
                 "id": data["budgets.id"],
-                "input_name": data["input_name"],
+                "input": data["input"],
                 "amount": data["amount"],
                 "date": data["date"],
-                "transaction": data["transaction"],
                 "account_id": data["account_id"],
                 "created_at": data["budgets.created_at"],
                 "updated_at": data["budgets.updated_at"]
@@ -62,12 +62,12 @@ class Account:
 
     @classmethod
     def insert_account(cls, data):
-        query = "INSERT INTO accounts (name, balance, user_id) VALUE (%(name)s, %(balance)s, %(user_id)s);"
+        query = "INSERT INTO accounts (account_name, account_balance, account_date, user_id) VALUE (%(account_name)s, %(account_balance)s, %(account_date)s, %(user_id)s);"
         return connectToMySQL(SCHEMA).query_db(query, data)
 
     @classmethod
     def updated_account(cls, data):
-        query ="UPDATE accounts SET name = %(name)s, balance = %(balance)s WHERE id = %(id)s;"
+        query ="UPDATE accounts SET account_name = %(account_name)s, account_balance = %(account_balance)s, account_date = %(account_date)s, user_id = %(user_id)s WHERE id = %(id)s;"
         connectToMySQL(SCHEMA).query_db(query, data)
 
     @classmethod
@@ -78,7 +78,7 @@ class Account:
     @staticmethod
     def account_val(pd):
         is_valid = True
-        if len(pd["name"]) < 1:
+        if len(pd["account_name"]) < 1:
             flash("Name must be at least 1 characters.")
             return False
         return is_valid
